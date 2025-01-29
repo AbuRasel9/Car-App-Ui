@@ -68,50 +68,64 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: MediaQuery
                       .of(context)
                       .size
-                      .height / 1.3),
+                      .height / 1.2),
             ),
           ),
-          ClipPath(
-            clipper: TopContainerClipper(),
-            child: Container(
-              margin: const EdgeInsets.all(16),
-              height: 200, // Ensure height is enough
-              width: double.infinity, // Ensure full width
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xff353F54),
-                    Color(0xff222834).withOpacity(.4),
-                  ],
+
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ClipPath(
+              clipper: TopContainerClipper(),
+              child: Container(
+                height: 240, // Ensure height is enough
+                width: double.infinity, // Ensure full width
+                decoration: BoxDecoration(
+                  color: Colors.red
+               /*   gradient: LinearGradient(
+                    colors: [
+                      Color(0xff222834),
+
+                      Color(0xff353F54).withOpacity(.7),
+                    ],
+                  ),*/
                 ),
               ),
             ),
           ),
-
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ClipPath(
+              clipper: CardClipper(),
+              child: Container(
+                color: Colors.green,
+                width: 200,
+                height: 240,
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
-
 class TopContainerClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
-    path.lineTo(0, 0);
-    path.quadraticBezierTo(0, 0, 0, 50);
+    path.moveTo(20, 0);
+    path.quadraticBezierTo(0, 0, 0, 20);
 
-    path.lineTo(0, size.height-50);
-    path.quadraticBezierTo(0, size.height,50 , size.height);
+    path.lineTo(0, size.height-20);
+    path.quadraticBezierTo(0, size.height,20 , size.height);
 
-    path.lineTo(size.width-100, size.height);
-    path.quadraticBezierTo(size.width, size.height,size.width , size.height-100);
+    path.lineTo(size.width-15, size.height-50);
+    path.quadraticBezierTo(size.width, size.height-50,size.width , size.height-65);
 
 
-    path.lineTo(size.width, 50);
-    path.quadraticBezierTo(size.width, 0,size.width-50 , 0);
+    path.lineTo(size.width, 20);
+    path.quadraticBezierTo(size.width, 0,size.width-20 , 0);
+
     path.close();
-
     return path;
   }
 
@@ -120,6 +134,34 @@ class TopContainerClipper extends CustomClipper<Path> {
     return true;
   }
 }
+class CardClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.moveTo(20, 0);
+    path.quadraticBezierTo(0, 0, 0, 20);
+
+    path.lineTo(0, size.height-20);
+    path.quadraticBezierTo(0, size.height,20 , size.height);
+
+    path.lineTo(size.width-15, size.height-50);
+    path.quadraticBezierTo(size.width, size.height-55,size.width , size.height-65);
+
+
+    path.lineTo(size.width, 20);
+    path.quadraticBezierTo(size.width, 0,size.width-20 , 0);
+
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return true;
+  }
+}
+
+
 
 
 
