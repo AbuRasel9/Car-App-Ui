@@ -85,11 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           GridView.builder(
 
+
             padding: const EdgeInsets.all(16),
             itemCount: 10,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: .6,
+              childAspectRatio: .7,
               crossAxisSpacing: 5.0,
               mainAxisSpacing: 10, // Adjust this value to decrease the bottom space
             ),
